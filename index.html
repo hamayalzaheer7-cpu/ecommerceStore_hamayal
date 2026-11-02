@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ECOM STORE</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <h2>EASY SHOPPING ♡</h2>
+      <a href="admin.html">Admin Dashboard</a>
+    </nav>
+
+    <header>
+      <h1>Welcome to ShopEase!</h1>
+      <p>Find your favourite products here.</p>
+
+      <input type="text" id="username" placeholder="Enter your name" />
+      <button onclick="setName()">Login</button>
+
+      <h3 id="welcome"></h3>
+    </header>
+
+    <h2 class="heading">Our Products</h2>
+    <section id="products"></section>
+
+    <h2 class="heading">My Cart</h2>
+    <section id="cart"></section>
+
+    <h3 id="total">Total: Rs. 0</h3>
+    <button onclick="checkout()">Place Order</button>
+
+    <script src="script.js"></script>
+  </body>
+</html>

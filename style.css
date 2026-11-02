@@ -1,0 +1,155 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 25px 6%;
+    background: white;
+    color: rgb(16, 146, 116);
+    font-family: Arial, sans-serif;
+}
+
+/* Navbar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    background: rgb(16, 146, 116);
+    color: white;
+    border-radius: 10px;
+
+}
+
+nav h2 {
+    margin: 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Hero */
+header {
+    background: #f2f2f2;
+    padding: 55px 35px;
+    margin: 25px 0;
+    border-radius: 12px;
+}
+
+header h1 {
+    font-size: 35px;
+}
+
+/* Inputs and buttons */
+input {
+    padding: 11px;
+    margin: 6px 3px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+button {
+    background: rgb(16, 146, 116);
+    color: white;
+    border: none;
+    padding: 11px 17px;
+    margin: 5px;
+    border-radius: 6px;
+}
+
+button:hover {
+    background: #444444;
+}
+
+/* Products */
+.heading {
+    margin-top: 40px;
+    border-bottom: 2px solid   rgb(16, 146, 116);
+    padding-bottom: 12px;
+}
+
+#products, .admin-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+}
+
+.card, .admin-card {
+    background: white;
+    width: 220px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.card img, .admin-card img {
+    width: 100%;
+    height: 165px;
+    object-fit: cover;
+    border-radius: 7px;
+}
+
+/* Cart and admin */
+#cart, .admin-form {
+    background: #f7f7f7;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+#cart {
+    max-width: 700px;
+}
+
+#total, .stat h2 {
+    color: rgb(16, 146, 116);
+}
+
+#dashboard {
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+.stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.stat, #login {
+    flex: 1;
+    min-width: 160px;
+    background: #f2f2f2;
+    padding: 18px;
+    border-radius: 9px;
+}
+
+#preview {
+    display: block;
+    margin: 12px 5px;
+    border-radius: 8px;
+}
+
+/* Mobile */
+@media(max-width: 600px) {
+    body {
+        padding: 12px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    header h1 {
+        font-size: 26px;
+    }
+
+    .card, .admin-card {
+        width: 100%;
+    }
+}
