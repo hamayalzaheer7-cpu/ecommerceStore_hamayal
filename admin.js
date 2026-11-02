@@ -1,5 +1,5 @@
-// Get saved products and orders
-var products = JSON.parse(localStorage.getItem("products")) || [];
+// Get saved product and orders
+var product = JSON.parse(localStorage.getItem("product")) || [];
 var orders = JSON.parse(localStorage.getItem("orders")) || [];
 var image = "";
 
@@ -11,7 +11,7 @@ function login() {
     document.getElementById("login").style.display = "none";
     document.getElementById("dashboard").style.display = "block";
 
-    showProducts();
+    showproduct();
     showOrders();
     showStats();
   } else {
@@ -64,9 +64,9 @@ function addProduct() {
     image: image,
   };
 
-  products.push(product);
+  product.push(product);
 
-  localStorage.setItem("products", JSON.stringify(products));
+  localStorage.setItem("product", JSON.stringify(product));
 
   alert("Product Added!");
 
@@ -77,15 +77,15 @@ function addProduct() {
 
   image = "";
 
-  showProducts();
+  showproduct();
   showStats();
 }
 
-// Show all products
-function showProducts() {
-  products = JSON.parse(localStorage.getItem("products")) || [];
+// Show all product
+function showproduct() {
+  product = JSON.parse(localStorage.getItem("product")) || [];
 
-  document.getElementById("productList").innerHTML = products
+  document.getElementById("productList").innerHTML = product
     .map(function (p) {
       return `
         <div class="admin-card">
@@ -96,18 +96,18 @@ function showProducts() {
         </div>
       `;
     })
-    .join("") || "No products yet!";
+    .join("") || "No product yet!";
 }
 
 // Delete a product
 function deleteProduct(id) {
-  products = products.filter(function (p) {
+  product = product.filter(function (p) {
     return p.id != id;
   });
 
-  localStorage.setItem("products", JSON.stringify(products));
+  localStorage.setItem("product", JSON.stringify(product));
 
-  showProducts();
+  showproduct();
   showStats();
 }
 
@@ -134,7 +134,7 @@ function showOrders() {
 function showStats() {
   orders = JSON.parse(localStorage.getItem("orders")) || [];
 
-  document.getElementById("productCount").innerHTML = products.length;
+  document.getElementById("productCount").innerHTML = product.length;
   document.getElementById("orderCount").innerHTML = orders.length;
 
   var total = orders.reduce(function (sum, o) {
