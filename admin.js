@@ -48,7 +48,7 @@ function previewImage() {
 }
 
 // Add a new product
-function addProduct() {
+function addproduct() {
   var name = document.getElementById("pname").value.trim();
   var price = Number(document.getElementById("price").value);
 
@@ -68,7 +68,7 @@ function addProduct() {
 
   localStorage.setItem("product", JSON.stringify(product));
 
-  alert("Product Added!");
+  alert("product Added!");
 
   document.getElementById("pname").value = "";
   document.getElementById("price").value = "";
@@ -92,7 +92,7 @@ function showproduct() {
           <img src="${p.image}" alt="${p.name}">
           <h3>${p.name}</h3>
           <p>Rs. ${p.price}</p>
-          <button onclick="deleteProduct(${p.id})">Delete</button>
+          <button onclick="deleteproduct(${p.id})">Delete</button>
         </div>
       `;
     })
@@ -100,7 +100,7 @@ function showproduct() {
 }
 
 // Delete a product
-function deleteProduct(id) {
+function deleteproduct(id) {
   product = product.filter(function (p) {
     return p.id != id;
   });
