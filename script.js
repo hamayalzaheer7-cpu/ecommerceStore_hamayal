@@ -45,7 +45,7 @@ function showName() {
 }
 
 // Show all product
-function showproduct() {
+function showproducts() {
   product = JSON.parse(localStorage.getItem("product")) || [];
 
   var html = "";
