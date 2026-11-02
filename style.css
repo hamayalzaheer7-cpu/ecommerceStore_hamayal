@@ -63,14 +63,14 @@ button:hover {
     background: #6f5f98;
 }
 
-/* itemss */
+/* Products */
 .heading {
     margin-top: 40px;
     border-bottom: 2px solid #8b7bb5;
     padding-bottom: 12px;
 }
 
-#itemss, .admin-list {
+#products, .admin-list {
     display: flex;
     flex-wrap: wrap;
     gap: 22px;

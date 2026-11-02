@@ -1,5 +1,5 @@
-// Get itemss from localStorage
-var itemss = JSON.parse(localStorage.getItem("itemss")) || [
+// Get products from localStorage
+var products = JSON.parse(localStorage.getItem("products")) || [
   {
     id: 1,
     name: "Shoes",
@@ -44,13 +44,13 @@ function showName() {
   }
 }
 
-// Show all itemss
-function showitemss() {
-  itemss = JSON.parse(localStorage.getItem("itemss")) || [];
+// Show all products
+function showProducts() {
+  products = JSON.parse(localStorage.getItem("products")) || [];
 
   var html = "";
 
-  itemss.forEach(function (p) {
+  products.forEach(function (p) {
     html += `
       <div class="card">
         <img src="${p.image}" alt="${p.name}">
@@ -61,8 +61,8 @@ function showitemss() {
     `;
   });
 
-  document.getElementById("itemss").innerHTML =
-    html || "No itemss available!";
+  document.getElementById("products").innerHTML =
+    html || "No products available!";
 }
 
 // Add product to cart
@@ -74,7 +74,7 @@ function addCart(id) {
   if (item) {
     item.qty++;
   } else {
-    var product = itemss.find(function (p) {
+    var product = products.find(function (p) {
       return p.id == id;
     });
 
@@ -179,5 +179,5 @@ function checkout() {
 }
 // Load saved data
 showName();
-showitemss();
+showProducts();
 showCart();
