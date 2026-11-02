@@ -5,8 +5,8 @@
 body {
     margin: 0;
     padding: 25px 6%;
-    background: white;
-    color: rgb(16, 146, 116);
+    background: #f8f7fc;
+    color: #4b4260;
     font-family: Arial, sans-serif;
 }
 
@@ -16,10 +16,9 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 15px 25px;
-    background: rgb(16, 146, 116);
+    background: #8b7bb5;
     color: white;
     border-radius: 10px;
-
 }
 
 nav h2 {
@@ -33,7 +32,7 @@ nav a {
 
 /* Hero */
 header {
-    background: #f2f2f2;
+    background: #eeeaf7;
     padding: 55px 35px;
     margin: 25px 0;
     border-radius: 12px;
@@ -47,12 +46,12 @@ header h1 {
 input {
     padding: 11px;
     margin: 6px 3px;
-    border: 1px solid #ccc;
+    border: 1px solid #d8d1e8;
     border-radius: 6px;
 }
 
 button {
-    background: rgb(16, 146, 116);
+    background: #8b7bb5;
     color: white;
     border: none;
     padding: 11px 17px;
@@ -61,17 +60,17 @@ button {
 }
 
 button:hover {
-    background: #444444;
+    background: #6f5f98;
 }
 
-/* Products */
+/* itemss */
 .heading {
     margin-top: 40px;
-    border-bottom: 2px solid   rgb(16, 146, 116);
+    border-bottom: 2px solid #8b7bb5;
     padding-bottom: 12px;
 }
 
-#products, .admin-list {
+#itemss, .admin-list {
     display: flex;
     flex-wrap: wrap;
     gap: 22px;
@@ -81,7 +80,7 @@ button:hover {
     background: white;
     width: 220px;
     padding: 12px;
-    border: 1px solid #ddd;
+    border: 1px solid #e5e0ef;
     border-radius: 10px;
 }
 
@@ -94,7 +93,7 @@ button:hover {
 
 /* Cart and admin */
 #cart, .admin-form {
-    background: #f7f7f7;
+    background: white;
     padding: 20px;
     border-radius: 10px;
     margin: 15px 0;
@@ -105,7 +104,7 @@ button:hover {
 }
 
 #total, .stat h2 {
-    color: rgb(16, 146, 116);
+    color: #8b7bb5;
 }
 
 #dashboard {
@@ -123,7 +122,7 @@ button:hover {
 .stat, #login {
     flex: 1;
     min-width: 160px;
-    background: #f2f2f2;
+    background: white;
     padding: 18px;
     border-radius: 9px;
 }
