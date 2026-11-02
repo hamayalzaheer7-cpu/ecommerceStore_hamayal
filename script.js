@@ -1,4 +1,4 @@
-// Get product from localStorage
+// Get saved products
 var product = JSON.parse(localStorage.getItem("product")) || [
   {
     id: 1,
@@ -20,10 +20,13 @@ var product = JSON.parse(localStorage.getItem("product")) || [
   },
 ];
 
+// Save default products
+localStorage.setItem("product", JSON.stringify(product));
+
 var cart = JSON.parse(localStorage.getItem("cart")) || [];
 var username = localStorage.getItem("username") || "";
 
-// Save customer name
+// Customer login
 function setName() {
   username = document.getElementById("username").value.trim();
 
@@ -36,7 +39,7 @@ function setName() {
   showName();
 }
 
-// Display customer name
+// Show customer name
 function showName() {
   if (username != "") {
     document.getElementById("welcome").innerHTML = "Welcome " + username + "!";
@@ -44,7 +47,7 @@ function showName() {
   }
 }
 
-// Show all product
+// Display products
 function showproducts() {
   product = JSON.parse(localStorage.getItem("product")) || [];
 
@@ -52,20 +55,20 @@ function showproducts() {
 
   product.forEach(function (p) {
     html += `
-      <div class="card">
-        <img src="${p.image}" alt="${p.name}">
-        <h3>${p.name}</h3>
-        <p>Rs. ${p.price}</p>
-        <button onclick="addCart(${p.id})">Add to Cart</button>
-      </div>
-    `;
+            <div class="card">
+                <img src="${p.image}" alt="${p.name}">
+                <h3>${p.name}</h3>
+                <p>Rs. ${p.price}</p>
+                <button onclick="addCart(${p.id})">Add to Cart</button>
+            </div>
+        `;
   });
 
   document.getElementById("product").innerHTML =
     html || "No product available!";
 }
 
-// Add product to cart
+// Add to cart
 function addCart(id) {
   var item = cart.find(function (p) {
     return p.id == id;
@@ -74,14 +77,14 @@ function addCart(id) {
   if (item) {
     item.qty++;
   } else {
-    var product = product.find(function (p) {
+    var itemProduct = product.find(function (p) {
       return p.id == id;
     });
 
-    if (!product) return;
+    if (!itemProduct) return;
 
     cart.push({
-      ...product,
+      ...itemProduct,
       qty: 1,
     });
   }
@@ -89,7 +92,7 @@ function addCart(id) {
   saveCart();
 }
 
-// Change product quantity
+// Change quantity
 function changeQty(id, amount) {
   var item = cart.find(function (p) {
     return p.id == id;
@@ -108,7 +111,7 @@ function changeQty(id, amount) {
   saveCart();
 }
 
-// Remove product from cart
+// Remove cart item
 function removeItem(id) {
   cart = cart.filter(function (p) {
     return p.id != id;
@@ -117,36 +120,36 @@ function removeItem(id) {
   saveCart();
 }
 
-// Save cart data
+// Save cart
 function saveCart() {
   localStorage.setItem("cart", JSON.stringify(cart));
   showCart();
 }
 
-// Display cart items and total
+// Display cart
 function showCart() {
   var html = "";
   var total = 0;
 
   cart.forEach(function (p) {
-    total = total + p.price * p.qty;
+    total += p.price * p.qty;
 
     html += `
-      <p>
-        ${p.name} - Rs. ${p.price}
-        <button onclick="changeQty(${p.id}, -1)">-</button>
-        ${p.qty}
-        <button onclick="changeQty(${p.id}, 1)">+</button>
-        <button onclick="removeItem(${p.id})">Remove</button>
-      </p>
-    `;
+            <p>
+                ${p.name} - Rs. ${p.price}
+                <button onclick="changeQty(${p.id}, -1)">-</button>
+                ${p.qty}
+                <button onclick="changeQty(${p.id}, 1)">+</button>
+                <button onclick="removeItem(${p.id})">Remove</button>
+            </p>
+        `;
   });
 
   document.getElementById("cart").innerHTML = html || "Your cart is empty!";
   document.getElementById("total").innerHTML = "Total: Rs. " + total;
 }
 
-// Place order
+// Checkout
 function checkout() {
   if (username == "") {
     alert("Please enter your name first!");
@@ -162,7 +165,7 @@ function checkout() {
   var total = 0;
 
   cart.forEach(function (p) {
-    total = total + p.price * p.qty;
+    total += p.price * p.qty;
   });
 
   orders.push({
@@ -170,6 +173,7 @@ function checkout() {
     items: cart,
     total: total,
   });
+
   localStorage.setItem("orders", JSON.stringify(orders));
 
   alert("Order placed successfully!");
@@ -177,7 +181,8 @@ function checkout() {
   cart = [];
   saveCart();
 }
+
 // Load saved data
 showName();
-showproduct();
+showproducts();
 showCart();

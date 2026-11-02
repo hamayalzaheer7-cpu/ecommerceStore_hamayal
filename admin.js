@@ -1,4 +1,4 @@
-// Get saved product and orders
+// Get saved products and orders
 var product = JSON.parse(localStorage.getItem("product")) || [];
 var orders = JSON.parse(localStorage.getItem("orders")) || [];
 var image = "";
@@ -19,7 +19,7 @@ function login() {
   }
 }
 
-// Upload and preview image
+// Preview uploaded image
 function previewImage() {
   var file = document.getElementById("image").files[0];
 
@@ -30,7 +30,7 @@ function previewImage() {
     }
 
     if (file.size > 500000) {
-      alert("Please select an image smaller than 500 KB!");
+      alert("Select an image smaller than 500 KB!");
       document.getElementById("image").value = "";
       return;
     }
@@ -47,7 +47,7 @@ function previewImage() {
   }
 }
 
-// Add a new product
+// Add product
 function addproduct() {
   var name = document.getElementById("pname").value.trim();
   var price = Number(document.getElementById("price").value);
@@ -57,18 +57,18 @@ function addproduct() {
     return;
   }
 
-  var product = {
+  var newProduct = {
     id: Date.now(),
     name: name,
     price: price,
     image: image,
   };
 
-  product.push(product);
+  product.push(newProduct);
 
   localStorage.setItem("product", JSON.stringify(product));
 
-  alert("product Added!");
+  alert("Product Added!");
 
   document.getElementById("pname").value = "";
   document.getElementById("price").value = "";
@@ -81,25 +81,26 @@ function addproduct() {
   showStats();
 }
 
-// Show all product
+// Display products
 function showproduct() {
   product = JSON.parse(localStorage.getItem("product")) || [];
 
-  document.getElementById("productList").innerHTML = product
-    .map(function (p) {
-      return `
-        <div class="admin-card">
-          <img src="${p.image}" alt="${p.name}">
-          <h3>${p.name}</h3>
-          <p>Rs. ${p.price}</p>
-          <button onclick="deleteproduct(${p.id})">Delete</button>
-        </div>
-      `;
-    })
-    .join("") || "No product yet!";
+  document.getElementById("productList").innerHTML =
+    product
+      .map(function (p) {
+        return `
+            <div class="admin-card">
+                <img src="${p.image}" alt="${p.name}">
+                <h3>${p.name}</h3>
+                <p>Rs. ${p.price}</p>
+                <button onclick="deleteproduct(${p.id})">Delete</button>
+            </div>
+        `;
+      })
+      .join("") || "No product yet!";
 }
 
-// Delete a product
+// Delete product
 function deleteproduct(id) {
   product = product.filter(function (p) {
     return p.id != id;
@@ -111,26 +112,31 @@ function deleteproduct(id) {
   showStats();
 }
 
-// Show customer orders
+// Display customer orders
 function showOrders() {
   orders = JSON.parse(localStorage.getItem("orders")) || [];
 
-  document.getElementById("orderList").innerHTML = orders
-    .map(function (o) {
-      return `
-        <div class="admin-card">
-          <h3>Customer: ${o.customer}</h3>
-          <p>${o.items.map(function (p) {
-            return p.name + " x " + p.qty;
-          }).join(", ")}</p>
-          <h3>Rs. ${o.total}</h3>
-        </div>
-      `;
-    })
-    .join("") || "No orders yet!";
+  document.getElementById("orderList").innerHTML =
+    orders
+      .map(function (o) {
+        return `
+            <div class="admin-card">
+                <h3>Customer: ${o.customer}</h3>
+                <p>
+                    ${o.items
+                      .map(function (p) {
+                        return p.name + " x " + p.qty;
+                      })
+                      .join(", ")}
+                </p>
+                <h3>Rs. ${o.total}</h3>
+            </div>
+        `;
+      })
+      .join("") || "No orders yet!";
 }
 
-// Update dashboard statistics
+// Dashboard statistics
 function showStats() {
   orders = JSON.parse(localStorage.getItem("orders")) || [];
 
